@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+  <!--
+/** Generic Stuff **/
+html { font-size: 10pt; }
+h1, h2, h3 { font-family: sans-serif; font-weight: bold; }
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.25em; }
+h3 { font-size: 1em; }
+address { font-size: .8em; }
+img { border: none; }
+input, select { margin: .25em; }
+label { font-family: serif; font-weight: bold; }
+label:after { content: ":"; }
+
+/** Header **/
+div#header { border-bottom: solid 1px #888; }
+div#leftclick { float: right; }
+div#leftclick img { border: solid 1px #888; }
+
+/** Instructions Panel **/
+div#instructions { font-size: .9em; }
+
+/** Input Form **/
+div#details { float: left; margin: 0 1em 0 0; }
+div#detailsdhtml { border: solid 1px #000; margin: 0 0 1em 0; }
+div.wrapper { clear: left; font-family: sans-serif; }
+div.label { width: 15em; float: left; margin: .25em; padding: .5em 0; }
+div.inputs { max-width: 25em; float: left; margin: .25em; }
+div.buttons { clear: left; text-align: center; background-color: #eee; color: inherit; border-top: solid 1px #000; }
+span.particle { }
+
+/** Results Panel **/
+div#results { float: left; margin: 0 0 1em 0; }
+div#results h3 { text-align: center; }
+div#resultsdhtml { border: solid 1px #000; margin: 0 0 1em 0; }
+
+table#amortization { }
+table#amortization th, table#amortization td { border: solid 1px #000; background-color: #fff; color: inherit; padding: .25em; }
+table#amortization th { text-align: center; }
+table#amortization tr:hover td { background-color: #eee; color: inherit; }
+
+div.graphcanvas { }
+div.graphlabel { font-size: .8em; font-family: fixed; }
+div.graphlabelx div.inner { margin: .25em 0; }
+div.graphlabely div.inner { margin: 0 .25em; }
+
+div.graphkey { border: solid 1px #000; margin: 0 0 0 .25em; font-size: .8em; }
+div.graphkey h4 { text-align: center; font-variant: small-caps; margin: .25em; padding: 0; }
+div.graphkey div.inner { padding: .25em; }
+div.graphkeyswatch { border: solid 1px #000; }
+
+div.graphstart { border-left: solid 1px #000; }
+div.graphend { border-right: solid 1px #000; }
+div.graphyear { border-right: solid 1px #ccc; }
+div.graphbar { background-color: #eee; color: inherit; border-top: solid 1px #000; border-bottom: solid 1px #000; }
+div.graphbar:hover { background-color: #fff; color: inherit; }
+
+div.balancegraphbar { background-color: #00f; color: inherit; }
+div.graphbar:hover div.balancegraphbar { background-color: #bbf; color: inherit; }
+
+div.totalpaidgraphbar { background-color: #b00; color: inherit; }
+div.graphbar:hover div.totalpaidgraphbar { background-color: #fbb; color: inherit; }
+
+div.totalinterestpaidgraphbar { background-color: #0b0; color: inherit; }
+div.graphbar:hover div.totalinterestpaidgraphbar { background-color: #bfb; color: inherit; }
+
+/** Footer **/
+div#footer { clear: both; margin: 1em 0 0 0; }
+div#footer address { border-top: solid 1px #888; color: #888; }
+div#footer address a { color: #888; text-decoration: underline; }
+div#version { float: right; font-family: fixed; font-size: .7em; border: solid 1px #888; color: #888; background-color: transparent; }
+div#version:before { content: "version "; }
+
+/** Popups **/
+div.popup { position: absolute; top: 25%; left: 0; right: 0; text-align: center; }
+div.popup div.inner { margin: 0 auto; width: 400px; border: solid 2px #000; background-color: #eee; color: inherit; }
+div.popup div.popuptitlebar { background-color: #888; color: #fff; font-weight: bold; border-bottom: solid 1px #000; }
+div.popup div.popuptitlebar:after { content: "Information"; }
+div.popup div.popupbody { max-height: 200px; overflow: auto; padding: .5em; text-align: left; }
+div.popup div.popupbutton { font-family: fixed; font-weight: normal; }
+div.popup div.popupbutton a { border: solid 1px #000; padding: 0 4px; margin: 0; text-decoration: none; }
+div.popup div.popupbutton a:link, div.popup div.popupbutton a:visited { color: #fff; background-color: transparent; }
+div.popup div.popupbutton a:hover { color: #fff; background-color: #000; }
+div.popup div.popupbutton a:active { color: #f00; background-color: #000; }
+div.popup h2 { margin: 0; }
+
+/** Tabbed Panes **/
+div.tabs { clear: both; }
+div.tabsHeader ul { margin: 0; padding: 0 0 0 .5em; }
+div.tabsHeader li { list-style: none; float: left; margin: 0 .25em 0 0; border: solid 2px #000; border-bottom: none; }
+div.tabsHeader a { display: block; position: relative; top: 2px; padding: .25em; }
+div.tabsHeader a:link, div.tabsHeader a:visited { text-decoration: none; color: #00f; background-color: #ffe; border: solid 1px #fff; border-bottom: none; }
+div.tabsHeader a:hover { text-decoration: underline; color: #00f; background-color: #ffe; border: solid 1px #000; border-bottom: none; }
+div.tabsHeader a:active { top: 4px; text-decoration: underline; color: #f00; background-color: #fee; border: solid 1px #000; border-bottom: none; }
+div.tabsViewPane { clear: both; border: solid 2px #000; background-color: #ffe; color: inherit; padding: 1px; margin: 0 .25em 1em .25em; }
+
+/** Other stuff **/
+div.throbber { text-align: center; padding: .25em; }
+  -->
+  </style>
+  <script type="text/javascript" language="javascript">
+  <!--
+/** Downloaded from http://blog.stevenlevithan.com/archives/date-time-format **/
+/*
+  Date Format 1.1
+  (c) 2007 Steven Levithan <stevenlevithan.com>
+  MIT license
+  With code by Scott Trenda (Z and o flags, and enhanced brevity)
+*/
+
+/*** dateFormat
+  Accepts a date, a mask, or a date and a mask.
+  Returns a formatted version of the given date.
+  The date defaults to the current date/time.
+  The mask defaults ``"ddd mmm d yyyy HH:MM:ss"``.
+*/
+var dateFormat = function () {
+  var token        = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloZ]|"[^"]*"|'[^']*'/g,
+    timezone     = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
+    timezoneClip = /[^-+\dA-Z]/g,
+    pad = function (value, length) {
+      value = String(value);
+      length = parseInt(length) || 2;
+      while (value.length < length)
+        value = "0" + value;
+      return value;
+    };
+
+  // Regexes and supporting functions are cached through closure
+  return function (date, mask) {
+    // Treat the first argument as a mask if it doesn't contain any numbers
+    if (
+      arguments.length == 1 &&
+      (typeof date == "string" || date instanceof String) &&
+      !/\d/.test(date)
+    ) {
+      mask = date;
+      date = undefined;
+    }
+
+    date = date ? new Date(date) : new Date();
+    if (isNaN(date))
+      throw "invalid date";
+
+    var dF = dateFormat;
+    mask   = String(dF.masks[mask] || mask || dF.masks["default"]);
+
+    var d = date.getDate(),
+      D = date.getDay(),
+      m = date.getMonth(),
+      y = date.getFullYear(),
+      H = date.getHours(),
+      M = date.getMinutes(),
+      s = date.getSeconds(),
+      L = date.getMilliseconds(),
+      o = date.getTimezoneOffset(),
+      flags = {
+        d:    d,
+        dd:   pad(d),
+        ddd:  dF.i18n.dayNames[D],
+        dddd: dF.i18n.dayNames[D + 7],
+        m:    m + 1,
+        mm:   pad(m + 1),
+        mmm:  dF.i18n.monthNames[m],
+        mmmm: dF.i18n.monthNames[m + 12],
+        yy:   String(y).slice(2),
+        yyyy: y,
+        h:    H % 12 || 12,
+        hh:   pad(H % 12 || 12),
+        H:    H,
+        HH:   pad(H),
+        M:    M,
+        MM:   pad(M),
+        s:    s,
+        ss:   pad(s),
+        l:    pad(L, 3),
+        L:    pad(L > 99 ? Math.round(L / 10) : L),
+        t:    H < 12 ? "a"  : "p",
+        tt:   H < 12 ? "am" : "pm",
+        T:    H < 12 ? "A"  : "P",
+        TT:   H < 12 ? "AM" : "PM",
+        Z:    (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
+        o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4)
+      };
+
+    return mask.replace(token, function ($0) {
+      return ($0 in flags) ? flags[$0] : $0.slice(1, $0.length - 1);
+    });
+  };
+}();
+
+// Some common format strings
+dateFormat.masks = {
+  "default":       "ddd mmm d yyyy HH:MM:ss",
+  shortDate:       "m/d/yy",
+  mediumDate:      "mmm d, yyyy",
+  longDate:        "mmmm d, yyyy",
+  fullDate:        "dddd, mmmm d, yyyy",
+  shortTime:       "h:MM TT",
+  mediumTime:      "h:MM:ss TT",
+  longTime:        "h:MM:ss TT Z",
+  isoDate:         "yyyy-mm-dd",
+  isoTime:         "HH:MM:ss",
+  isoDateTime:     "yyyy-mm-dd'T'HH:MM:ss",
+  isoFullDateTime: "yyyy-mm-dd'T'HH:MM:ss.lo"
+};
+
+// Internationalization strings
+dateFormat.i18n = {
+  dayNames: [
+    "Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat",
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+  ],
+  monthNames: [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+  ]
+};
+
+// For convenience...
+Date.prototype.format = function (mask) {
+  return dateFormat(this, mask);
+}
+  // -->
+  </script>
+  <script type="text/javascript" language="javascript">
+  <!--
+/**
+ * Set the "display" style property of the element with the given ID to the 
+ * given value.
+ *
+ * @param elemId ID of the element to show or hide.
+ * @param displayValue Value to assign to the display style property.  Must be
+ *   a valid CSS "display" style property value.
+ */
+function setElementDisplay(elemId, displayValue) {
+  document.getElementById(elemId).style.display = displayValue;
+}
+
+/**
+ * Remove all children from the specified element.
+ * 
+ * @param elem Element to clear.
+ *
+ * @return Element passed in, now a leaf node.
+ */
+function removeAllChildren(elem) {
+  if (elem.hasChildNodes()) {
+    while (elem.childNodes.length >= 1) {
+      elem.removeChild(elem.firstChild);
+    }
+  }
+  return elem;
+}
+
+/**
+ * Create an element of the given type, apply the given id and class attribute
+ * values, and append the element to the given parent element.
+ * 
+ * @param tagName Type of element to create.
+ * @param elemId Optional, value to give the element's id attribute.
+ * @param styleClass Optional, value to give the element's class attribute.
+ * @param parentElem Optional, Element object to append the new element as a 
+ *   child of (otherwise the new element will not be added to the document).
+ * 
+ * @return Newly created element object.
+ */
+function createElement(tagName, elemId, styleClass, parentElem) {
+  var elem = document.createElement(tagName);
+  if (elemId && elemId != null) {
+    elem.setAttribute("id", elemId);
+  }
+  if (styleClass && styleClass != null) {
+    elem.setAttribute("class", styleClass);
+  }
+  if (parentElem && parentElem != null && parentElem.appendChild) {
+    parentElem.appendChild(elem);
+  }
+  return elem;
+}
+
+/**
+ * Create a div element with style that clears all floats.
+ *
+ * @param elemId Optional, value to give the element's id attribute.
+ * @param styleClass Optional, value to give the element's class attribute.
+ * @param parentElem Optional, Element object to append the new element as a 
+ *   child of (otherwise the new element will not be added to the document).
+ *
+ * @return Newly created element object.
+ */
+function createClearDiv(elemId, styleClass, parentElem) {
+  var clearElem = createElement("div", elemId, styleClass, parentElem);
+  clearElem.setAttribute("style", "clear:both;");
+  return clearElem;
+}
+
+/**
+ * Create an input element with the given attributes, and append the element
+ * to the given parent element.  All parameters are nominally optional.
+ *
+ * @param elemId Value to give the element's id attribute.
+ * @param styleClass Value to give the element's class attribute.
+ * @param inputType Value to give the input element's type attribute.
+ * @param value Value to give the input element's value attribute.
+ * @param size Value to give the input element's size attribute.
+ * @param maxLength Value to give the input element's maxlength attribute.
+ * @param parentElem Element object to append the new element as a child of 
+ *   (otherwise the new element will not be added to the document).
+ * 
+ * @return Newly created element object.
+ */
+function createInputElement(elemId, styleClass, inputType, value, size, maxLength, parentElem) {
+  var inputElem = createElement("input", elemId, styleClass, parentElem);
+  if (inputType && inputType != null) {
+    inputElem.setAttribute("type", inputType);
+  }
+  if (value && value != null) {
+    inputElem.setAttribute("value", value);
+  }
+  if (size && size != null) {
+    inputElem.setAttribute("size", size);
+  }
+  if (maxLength && maxLength != null) {
+    inputElem.setAttribute("maxlength", maxLength);
+  }
+  return inputElem;
+}
+
+/**
+ * Create a select element with the given attributes, give it option elements
+ * to represent the given values and labels, and append the select element to
+ * the given parent element.
+ *
+ * @param elemId Value to give the element's id attribute.
+ * @param styleClass Value to give the element's class attribute.
+ * @param optionValues Array containing the values to assign to the option 
+ *   elements' value attributes.
+ * @param optionLabels Array containing the values to display as content of the
+ *   option elements.
+ * @param defaultValue Value, corresponding to an element in optionValues, that
+ *   should be selected by default.
+ * @param parentElem Element object to append the new element as a child of 
+ *   (otherwise the new element will not be added to the document).
+ * 
+ * @return Newly created element object.
+ */
+function createSelectElement(elemId, styleClass, optionValues, optionLabels, defaultValue, parentElem) {
+  var selectElem = createElement("select", elemId, styleClass, parentElem);
+  var count = optionValues.length < optionLabels.length ? optionValues.length : optionLabels.length;
+  for (var i=0; i<count; i++) {
+    optionElem = createElement("option", null, null, selectElem);
+    optionElem.setAttribute("value", optionValues[i]);
+    if (optionValues[i] == defaultValue) {
+      optionElem.setAttribute("selected", "selected");
+    }
+    optionElem.appendChild(document.createTextNode(optionLabels[i]));
+    optionElem = null;
+  }
+  selectElem.value = defaultValue;
+  return selectElem;
+}
+
+/**
+ * Create a tabbed pane element with the given id and class, which contains the
+ * tabs with the tiven labels and content elements.
+ * 
+ * @param elemId Value to give the element's id attribute.
+ * @param styleClass Value to give the element's class attribute.
+ * @param tabLabels Array object containing labels for the tabs.
+ * @param tabElems Array object containing elements for the tab contents.
+ * @param parentElem Element object to append the new element as a child of 
+ *   (otherwise the new element will not be added to the document).
+ *
+ * @return Generated element.
+ */
+function createTabbedPane(elemId, styleClass, tabLabels, tabElems, parentElem) {
+  var containerElem = createElement("div", elemId, styleClass, parentElem);
+  var headerElem = createElement("div", null, "tabsHeader", containerElem);
+  var viewPaneId = "tabsViewPane"+(++tabbedPaneUniqueIndex);
+  var viewPaneElem = createElement("div", viewPaneId, "tabsViewPane", containerElem);
+  var headerListElem = createElement("ul", null, null, headerElem);
+  var count = tabLabels.length < tabElems.length ? tabLabels.length : tabElems.length;
+  var headerListItemElem, headerListItemAnchorElem;
+  for (var i=0; i<count; i++) {
+    headerListItemElem = createElement("li", null, null, headerListElem);
+    headerListItemAnchorElem = createElement("a", null, null, headerListItemElem);
+    headerListItemAnchorElem.setAttribute("href", "#");
+    headerListItemAnchorElem.setAttribute("onclick", "setTabbedPaneView('" + viewPaneId + "', " + i + "); return false;");
+    headerListItemAnchorElem.appendChild(document.createTextNode(tabLabels[i]));
+    viewPaneElem.appendChild(tabElems[i]);
+  }
+  setTabbedPaneView(viewPaneId, 0);
+}
+tabbedPaneUniqueIndex = 0;
+
+/**
+ * Set the view in the tabbed pane to the specified index.  This method is 
+ * a callback setup when the tabbed pane is created.
+ * 
+ * @param viewPaneElemId Id value of the div element that represents the view 
+ *   pane of a tabbed pane created with 
+ *   {@link #createTabbedPane(elemId, styleClass, tabLabels, tabElems, parentElem)}
+ * @param index Tab index to show.
+ * 
+ * @return The selected element.
+ */
+function setTabbedPaneView(viewPaneElemId, index) {
+  viewPaneElem = document.getElementById(viewPaneElemId);
+  if (viewPaneElem && viewPaneElem != null && viewPaneElem.hasChildNodes) {
+    if (viewPaneElem.hasChildNodes()) {
+      for (i=0; i<viewPaneElem.childNodes.length; i++) {
+        viewPaneElem.childNodes[i].style.display = (i == index) ? "inline" : "none";
+      }
+      return viewPaneElem.childNodes[index];
+    }
+  }
+  return null;
+}
+  // -->
+  </script>
+  <script type="text/javascript" language="javascript">
+  <!--
+//-- VERSION -----
+VERSION_LOANCALC = "beta 0.2";
+
+//-- ELEMENT ID VALUES -----
+ID_DETAILS = "details";
+ID_DETAILS_DHTML = "detailsdhtml";
+
+ID_PRINCIPAL = "principal";
+ID_CURRENCY = "currency";
+ID_INTEREST_RATE = "rate";
+ID_COMMENCEMENT_DATE = "commencement";
+ID_PAYMENT_PERIOD = "period";
+ID_LOAN_TERM = "term";
+
+ID_RESULTS = "results";
+ID_RESULTS_DHTML = "resultsdhtml";
+
+ID_PAYMENT_AMOUNT = "payment";
+ID_TOTAL_INTEREST_PAID = "totalInterest";
+ID_TOTAL_AMOUNT_PAID = "totalAmount";
+ID_INTEREST_PRINCIPAL_RATIO = "ipRatio";
+ID_CREATE_AMORTIZATION_DETAILS = "createAmortization";
+ID_AMORTIZATION_THROBBER = "amortizationThrobber";
+
+//-- INPUT ELEMENT TYPE VALUES -----
+INPUT_TYPE_TEXT = "text";
+INPUT_TYPE_BUTTON = "button";
+INPUT_TYPE_SUBMIT = "submit";
+INPUT_TYPE_RESET = "reset";
+
+//-- COMPUTATION CONSTANTS -----
+DAYS_PER_YEAR = 365.25;
+OPTION_VALUES_PAYMENT_PERIOD = new Array(1, 12, 26, 52, 365);
+OPTION_LABELS_PAYMENT_PERIOD = new Array("Years", "Months", "Fortnights", "Weeks", "Days");
+DEFAULT_OPTION_VALUE_PAYMENT_PERIOD = OPTION_VALUES_PAYMENT_PERIOD[1]; // Monthly
+
+//-- FUNCTIONS -----
+/**
+ * Initialisation function, called on page load.
+ */
+function initialiseLoanCalculator() {
+  setElementDisplay(ID_RESULTS, "none");
+  setElementDisplay(ID_DETAILS, "none");
+  var popups = document.getElementsByTagName("div");
+  for (var i=0; i<popups.length; i++) {
+    var popup = popups[i];
+    if (popup.getAttribute("class") == "popup") {
+      popup.setAttribute("style", "display:none;");
+    }
+  }
+  initialiseDetailsPanel();
+  document.getElementById('version').appendChild(document.createTextNode(VERSION_LOANCALC));
+}
+
+/**
+ * Initialise the details (input) panel.  The details panel is displayed (set
+ * to visible) by this method.
+ */
+function initialiseDetailsPanel() {
+  var containerElem = document.getElementById(ID_DETAILS_DHTML);
+  var principalFieldElem = createInputElement(ID_PRINCIPAL, null, INPUT_TYPE_TEXT, "10000", 8, 8);
+  var currencyFieldElem = createInputElement(ID_CURRENCY, null, INPUT_TYPE_TEXT, "AUD", 4, 4);
+  createFormComponent(principalFieldElem, currencyFieldElem, "Principal", "How much is being borrowed, including fees if they are being financed?", containerElem);
+  var interestRateFieldElem = createInputElement(ID_INTEREST_RATE, null, INPUT_TYPE_TEXT, "8.0", 6, 6);
+  createFormComponent(interestRateFieldElem, document.createTextNode("% p.a."), "Interest Rate", "What is the annual interest rate of the loan?", containerElem);
+  var commencementDateFieldElem = createInputElement(ID_COMMENCEMENT_DATE, null, INPUT_TYPE_TEXT, new Date().format("isoDate"), 10, 10);
+  var commencementDateCalendarButtonElem = createInputElement(null, null, INPUT_TYPE_BUTTON, "Calendar");
+  // TODO Calendar
+  createFormComponent(commencementDateFieldElem, commencementDateCalendarButtonElem, "Commencement Date", "When was the loan account opened?", containerElem);
+  var loanTermFieldElem = createInputElement(ID_LOAN_TERM, null, INPUT_TYPE_TEXT, "60", 6, 6);
+  var paymentPeriodSelectElem = createSelectElement(ID_PAYMENT_PERIOD, null, OPTION_VALUES_PAYMENT_PERIOD, OPTION_LABELS_PAYMENT_PERIOD, DEFAULT_OPTION_VALUE_PAYMENT_PERIOD);
+  paymentPeriodSelectElem.oldvalue = paymentPeriodSelectElem.value;
+  paymentPeriodSelectElem.onclick = updateLoanTermFromPeriodChange;
+  createFormComponent(loanTermFieldElem, paymentPeriodSelectElem, "Loan Term", "How many repayments are being made at what frequency?", containerElem);
+  createFormButtons(containerElem);
+  createClearDiv(null, null, containerElem);
+  setElementDisplay(ID_DETAILS, "block");
+}
+
+/**
+ * Update the loan term when the user changes the period type select value.
+ * This method is called by an event handler.
+ */
+function updateLoanTermFromPeriodChange() {
+  var paymentPeriodSelectElem = document.getElementById(ID_PAYMENT_PERIOD);
+  var loanTermFieldElem = document.getElementById(ID_LOAN_TERM);
+  var oldPaymentPeriod = paymentPeriodSelectElem.oldvalue * 1;
+  var newPaymentPeriod = paymentPeriodSelectElem.value * 1;
+  var oldLoanTerm = loanTermFieldElem.value * 1;
+  var newLoanTerm = oldLoanTerm * newPaymentPeriod / oldPaymentPeriod;
+  loanTermFieldElem.value = newLoanTerm;
+  paymentPeriodSelectElem.oldvalue = paymentPeriodSelectElem.value;
+}
+
+/**
+ * Create the form component for the given input element, including the label,
+ * tooltip text and required scaffolding.
+ *
+ * @param inputElem1 First form input field (input or select element).
+ * @param inputElem2 Second form input field (input or select element).
+ * @param labelText Text to display in the generated label element.
+ * @param tooltipText Text to display in the tooltip element.
+ * @param containerElem Element to add the generated markup to.
+ *
+ * @return Generated element (top-level).
+ */
+function createFormComponent(inputElem1, inputElem2, labelText, tooltipText, containerElem) {
+  var wrapperDivElem = createElement("div", null, "wrapper", containerElem);
+  wrapperDivElem.setAttribute("title", tooltipText);
+  if (labelText && labelText != null) {
+    var labelDivElem = createElement("div", null, "label", wrapperDivElem);
+    var labelElem = createElement("label", null, null, labelDivElem);
+    labelElem.setAttribute("for", inputElem1.getAttribute("id"));
+    labelElem.setAttribute("title", tooltipText);
+    labelElem.appendChild(document.createTextNode(labelText));
+  }
+  var inputsDivElem = createElement("div", null, "inputs", wrapperDivElem);
+  if (inputElem1 && inputElem1 != null) {
+    if (inputElem1.setAttribute) {
+      inputElem1.setAttribute("title", tooltipText);
+    }
+    inputsDivElem.appendChild(inputElem1);
+  }
+  if (inputElem2 && inputElem2 != null) {
+    if (inputElem2.setAttribute) {
+      inputElem2.setAttribute("title", tooltipText);
+    }
+    inputsDivElem.appendChild(inputElem2);
+  }
+  return wrapperDivElem;
+}
+
+/**
+ * Create the form component containing the buttons.
+ *
+ * @param containerElem Element to add the generated markup to.
+ *
+ * @return Generated element (top-level).
+ */
+function createFormButtons(containerElem) {
+  var buttonsDivElem = createElement("div", null, "buttons", containerElem);
+  createInputElement(null, null, INPUT_TYPE_SUBMIT, "Calculate", null, null, buttonsDivElem);
+  createInputElement(null, null, INPUT_TYPE_RESET, "Reset", null, null, buttonsDivElem);
+  return buttonsDivElem;
+}
+
+/**
+ * Calculate the payment details based on the current values of the input 
+ * fields.  This method simply clears the previous results, displays a throbber
+ * and delegates to {@link #calculateLoanPaymentsImpl()}.
+ */
+function calculateLoanPayments() {
+  // Remove old results.
+  var containerElem = document.getElementById(ID_RESULTS_DHTML);
+  setElementDisplay(ID_RESULTS, "none");
+  removeAllChildren(containerElem);
+  
+  // Retrieve values from input form.
+  var principal = document.getElementById(ID_PRINCIPAL).value * 1;
+  var currency = document.getElementById(ID_CURRENCY).value;
+  var interestRate = document.getElementById(ID_INTEREST_RATE).value / 100.0;
+  var commencementText = document.getElementById(ID_COMMENCEMENT_DATE).value;
+  var commencementDate = new Date(commencementText.substring(0,4), parseInt(commencementText.substring(5,7))-1, commencementText.substring(8,10));
+  var paymentPeriod = document.getElementById(ID_PAYMENT_PERIOD).value * 1;
+  var loanTerm = document.getElementById(ID_LOAN_TERM).value * 1;
+  
+  // Do calculations.
+  var periodicInterestRate = interestRate / paymentPeriod;
+  var paymentValue = getPaymentValue(principal, periodicInterestRate, loanTerm);
+  var totalInterestPaid = getTotalInterestPaid(principal, paymentValue, periodicInterestRate, loanTerm);
+  var totalAmountPaid = principal + totalInterestPaid;
+  var interestPrincipalRatio = totalInterestPaid / principal * 100.0;
+  
+  // Scaffolding.
+  var innerDiv = createElement("div", null, null, containerElem);
+  
+  // Payment field.
+  var paymentsFieldElem = createInputElement(ID_PAYMENT_AMOUNT, null, INPUT_TYPE_TEXT, paymentValue.toFixed(2), 8, 8);
+  paymentsFieldElem.setAttribute("readonly", true);
+  createFormComponent(paymentsFieldElem, document.createTextNode(currency), "Payment Amount", null, innerDiv);
+  
+  // Total amount paid field.
+  var totalAmountPaidFieldElem = createInputElement(ID_TOTAL_AMOUNT_PAID, null, INPUT_TYPE_TEXT, totalAmountPaid.toFixed(2), 12, 12);
+  totalAmountPaidFieldElem.setAttribute("readonly", true);
+  createFormComponent(totalAmountPaidFieldElem, document.createTextNode(currency), "Total Amount Paid", null, innerDiv);
+  
+  // Total interest paid field.
+  var totalInterestFieldElem = createInputElement(ID_TOTAL_INTEREST_PAID, null, INPUT_TYPE_TEXT, totalInterestPaid.toFixed(2), 12, 12);
+  totalInterestFieldElem.setAttribute("readonly", true);
+  createFormComponent(totalInterestFieldElem, document.createTextNode(currency), "Total Interest Paid", null, innerDiv);
+  
+  // Interest - Principal ratio field.
+  var interestPrincipalRatioFieldElem = createInputElement(ID_INTEREST_PRINCIPAL_RATIO, null, INPUT_TYPE_TEXT, interestPrincipalRatio.toFixed(1), 8, 8);
+  interestPrincipalRatioFieldElem.setAttribute("readonly", true);
+  createFormComponent(interestPrincipalRatioFieldElem, document.createTextNode("%"), "Interest-Principal Ratio", null, innerDiv);
+  
+  // Link to create amortization details and graphs.
+  createClearDiv(null, null, containerElem);
+  var createAmortizationDetailsWrapperElem = createElement("div", ID_CREATE_AMORTIZATION_DETAILS, "wrapper", containerElem);
+  var createAmortizationDetailsButtonsElem = createElement("div", null, "buttons", createAmortizationDetailsWrapperElem);
+  createAmortizationDetailsButtonsElem.setAttribute("style", "text-align:center;");
+  var createAmortizationDetailsButtonElem = createInputElement(null, null, INPUT_TYPE_BUTTON, null, null, null, createAmortizationDetailsButtonsElem);
+  createAmortizationDetailsButtonElem.setAttribute("value", "Show Details...");
+  createAmortizationDetailsButtonElem.setAttribute("onclick", "createAmortizationDisplay(); return false;");
+  
+  // Display it.
+  setElementDisplay(ID_RESULTS, "block");
+}
+
+/**
+ * Determine the monthly payments required, based on the given parameters.
+ *
+ * @param principal Balance of the loan.
+ * @param periodicInterestRate Interest rate per payment period (1.0 == 100%).
+ * @param loanTerm Number of payments total.
+ *
+ * @return Required monthly payments.
+ */
+function getPaymentValue(principal, periodicInterestRate, loanTerm) {
+  var compoundedInterestRate = Math.pow((1 + periodicInterestRate), loanTerm);
+  return periodicInterestRate * ((principal * compoundedInterestRate) / (compoundedInterestRate - 1));
+}
+
+/**
+ * Determine the total interest paid over the loan period, using the given
+ * parameters.
+ *
+ * @param principal Balance of the loan.
+ * @param paymentValue Required monthly payments.
+ * @param periodicInterestRate Interest rate per payment period (1.0 == 100%).
+ * @param loanTerm Number of payments total.
+ *
+ * @return Total interest paid over the period of the loan.
+ */
+function getTotalInterestPaid(principal, paymentValue, periodicInterestRate, loanTerm) {
+  var balance = principal;
+  var totalInterestPaid = 0;
+  for (var i=0; i<loanTerm; i++) {
+    var actualPayment = getActualPayment(paymentValue, balance, periodicInterestRate);
+    var interestValue = balance * periodicInterestRate;
+    balance = balance * (1 + periodicInterestRate) - actualPayment;
+    totalInterestPaid += interestValue;
+  }
+  return totalInterestPaid;
+}
+
+/**
+ * Create the amortization table and graphs.  This method is called when the
+ * user clicks the "Display Details..." link, and delegates to the function
+ * {@link #createAmortizationDisplayImpl()} asynchronously.
+ */
+function createAmortizationDisplay() {
+  // Display a throbber while details are loaded.
+  var containerElem = document.getElementById(ID_RESULTS_DHTML);
+  var throbberDivElem = createElement("div", null, "throbber", containerElem);
+  var throbberImageElem = createElement("img", ID_AMORTIZATION_THROBBER, null, throbberDivElem);
+  throbberImageElem.setAttribute("src", "throbber.gif");
+  throbberImageElem.setAttribute("alt", "Calculating...");
+  
+  // Hide "Display Details..." link.
+  var createLink = document.getElementById(ID_CREATE_AMORTIZATION_DETAILS);
+  createLink.setAttribute("style", "display:none;");
+
+  // Display the details asynchronously.
+  setTimeout("createAmortizationDisplayImpl()", 100);
+}
+
+/**
+ * Create the amortization tables and graphs.  This method does the actual
+ * work and is called asynchronously by {@link #createAmortizationDisplay()}.
+ */
+function createAmortizationDisplayImpl() {
+  // Retrieve values from input form.
+  var principal = document.getElementById(ID_PRINCIPAL).value * 1;
+  var currency = document.getElementById(ID_CURRENCY).value;
+  var interestRate = document.getElementById(ID_INTEREST_RATE).value / 100.0;
+  var commencementText = document.getElementById(ID_COMMENCEMENT_DATE).value;
+  var commencementDate = new Date(commencementText.substring(0,4), parseInt(commencementText.substring(5,7))-1, commencementText.substring(8,10));
+  var paymentPeriod = document.getElementById(ID_PAYMENT_PERIOD).value * 1;
+  var loanTerm = document.getElementById(ID_LOAN_TERM).value * 1;
+  
+  // Initialise.
+  var periodicInterestRate = interestRate / paymentPeriod;
+  var paymentValue = getPaymentValue(principal, periodicInterestRate, loanTerm);
+  var paymentDate = new Date(commencementDate);
+  var totalWidth = 400;
+  var totalHeight = 300;
+  var barWidth = totalWidth / loanTerm;
+  var actualPayment, interestValue, capitalValue;
+  var balanceGraphBarHeight, totalPaidGraphBarHeight, totalInterestPaidGraphBarHeight;
+  var balanceGraphTooltip, totalPaidGraphTooltip;
+  
+  var principalRoundingFactor = Math.pow(10, Math.ceil(Math.log(principal) / Math.log(10)) - 2);
+  var roundedPrincipal = Math.ceil(principal / principalRoundingFactor) * principalRoundingFactor;
+  var finalTotalInterestPaid = getTotalInterestPaid(principal, paymentValue, periodicInterestRate, loanTerm);
+  var finalTotalAmountPaid = principal + finalTotalInterestPaid;
+  var totalAmountPaidRoundingFactor = Math.pow(10, Math.ceil(Math.log(finalTotalAmountPaid) / Math.log(10)) - 2);
+  var roundedFinalTotalAmountPaid = Math.ceil(finalTotalAmountPaid / totalAmountPaidRoundingFactor) * totalAmountPaidRoundingFactor;
+  
+  var amountPaidToDate = 0;
+  var interestPaidToDate = 0;
+  var balance = principal;
+  
+  // Create scaffolding.
+  var containerElem = document.getElementById(ID_RESULTS_DHTML);
+  var tableContainerElem = createElement("div", "amortizationtable", "tabviewport");
+  var balanceGraphContainerElem = createElement("div", "balancegraph", "tabviewport");
+  var totalPaidGraphContainerElem = createElement("div", "totalpaidgraph", "tabviewport");
+  var amortizationTableBodyElem = createAmortizationTableScaffolding(tableContainerElem);
+  var balanceGraphCanvasElem = createGraphScaffolding(balanceGraphContainerElem, "Balance Over Time", new Array("balancegraphbar"), new Array("Balance (" + currency + ")"));
+  var balanceGraphYLabelsWidth = addGraphYLabels(balanceGraphCanvasElem, totalHeight, "0 " + currency, roundedPrincipal + " " + currency);
+  var totalPaidGraphCanvasElem = createGraphScaffolding(totalPaidGraphContainerElem, "Total Paid Over Time", new Array("totalpaidgraphbar", "totalinterestpaidgraphbar"), new Array("Total Paid (" + currency + ")", "Interest Paid (" + currency + ")"));
+  var totalPaidGraphYLabelsWidth = addGraphYLabels(totalPaidGraphCanvasElem, totalHeight, "0 " + currency, roundedFinalTotalAmountPaid + " " + currency);
+  
+  // Iterate through each period of the loan term.
+  for (var i=0; i<loanTerm; i++) {
+    // Calculations.
+    paymentDate = getNextPaymentDate(paymentDate, paymentPeriod);
+    actualPayment = getActualPayment(paymentValue, balance, periodicInterestRate);
+    interestValue = balance * periodicInterestRate;
+    capitalValue = actualPayment - interestValue;
+    balance = balance * (1 + periodicInterestRate) - actualPayment;
+    amountPaidToDate += actualPayment;
+    interestPaidToDate += interestValue;
+    balanceGraphBarHeight = totalHeight * balance / roundedPrincipal;
+    balanceGraphTooltip = "Date: " + paymentDate.format("isoDate") + "; Balance: " + balance.toFixed(2) + " " + currency;
+    totalPaidGraphBarHeight = totalHeight * amountPaidToDate / roundedFinalTotalAmountPaid;
+    totalPaidGraphTooltip = "Date: " + paymentDate.format("isoDate") + "; Total Paid: " + amountPaidToDate.toFixed(2) + " " + currency + "; Interest Paid: " + interestPaidToDate.toFixed(2) + " " + currency;
+    totalInterestPaidGraphBarHeight = totalHeight * interestPaidToDate / roundedFinalTotalAmountPaid;
+    
+    // Add data for this period to the displays.
+    createAmortizationTableDataRow(amortizationTableBodyElem, i, paymentDate, actualPayment, interestValue, capitalValue, balance);
+    addGraphData(balanceGraphCanvasElem, i, new Array("balancegraphbar"), new Array(""+balanceGraphBarHeight), totalHeight, barWidth, balanceGraphTooltip, paymentDate, paymentPeriod, loanTerm);
+    addGraphData(totalPaidGraphCanvasElem, i, new Array("totalpaidgraphbar", "totalinterestpaidgraphbar"), new Array(""+totalPaidGraphBarHeight, ""+totalInterestPaidGraphBarHeight), totalHeight, barWidth, totalPaidGraphTooltip, paymentDate, paymentPeriod, loanTerm);
+  }
+  
+  // Add footers.
+  createClearDiv(null, null, balanceGraphCanvasElem);
+  createClearDiv(null, null, totalPaidGraphCanvasElem);
+  addGraphXLabels(balanceGraphCanvasElem, barWidth, totalWidth, commencementDate, paymentPeriod, loanTerm, balanceGraphYLabelsWidth);
+  addGraphXLabels(totalPaidGraphCanvasElem, barWidth, totalWidth, commencementDate, paymentPeriod, loanTerm, totalPaidGraphYLabelsWidth);
+  
+  // Put it all together.
+  createTabbedPane(null, "tabs", new Array("Amortization Table", "Balance", "Total Paid"), new Array(tableContainerElem, balanceGraphContainerElem, totalPaidGraphContainerElem), containerElem);
+  createClearDiv(null, null, balanceGraphCanvasElem);
+  createClearDiv(null, null, totalPaidGraphCanvasElem);
+  createClearDiv(null, null, containerElem);
+  setElementDisplay(ID_AMORTIZATION_THROBBER, "none");
+}
+
+function createAmortizationTableScaffolding(tableContainerElem) {
+  var tableHeaderElem = createElement("h3", null, null, tableContainerElem);
+  tableHeaderElem.appendChild(document.createTextNode("Amortization Table"));
+  var tableElem = createElement("table", "amortization", null, tableContainerElem);
+  var tableHeadElem = createElement("thead", null, null, tableElem);
+  var tableHeadRowElem = createElement("tr", null, null, tableHeadElem);
+  createElement("th", null, null, tableHeadRowElem).appendChild(document.createTextNode("#"));
+  createElement("th", null, null, tableHeadRowElem).appendChild(document.createTextNode("Date"));
+  createElement("th", null, null, tableHeadRowElem).appendChild(document.createTextNode("Total Payment"));
+  createElement("th", null, null, tableHeadRowElem).appendChild(document.createTextNode("Interest"));
+  createElement("th", null, null, tableHeadRowElem).appendChild(document.createTextNode("Capital"));
+  createElement("th", null, null, tableHeadRowElem).appendChild(document.createTextNode("Balance C/F"));
+  return createElement("tbody", null, null, tableElem);
+}
+
+function createAmortizationTableDataRow(tableBodyElem, i, paymentDate, actualPayment, interestValue, capitalValue, balance) {
+  var tableRowElem = createElement("tr", null, null, tableBodyElem);
+  createElement("td", null, null, tableRowElem).appendChild(document.createTextNode(i+1));
+  createElement("td", null, null, tableRowElem).appendChild(document.createTextNode(paymentDate.format("isoDate")));
+  createElement("td", null, null, tableRowElem).appendChild(document.createTextNode(actualPayment.toFixed(2)));
+  createElement("td", null, null, tableRowElem).appendChild(document.createTextNode(interestValue.toFixed(2)));
+  createElement("td", null, null, tableRowElem).appendChild(document.createTextNode(capitalValue.toFixed(2)));
+  createElement("td", null, null, tableRowElem).appendChild(document.createTextNode(balance.toFixed(2)));
+}
+
+function createGraphScaffolding(graphContainerElem, heading, keyClasses, keyLabels) {
+  var graphHeaderElem = createElement("h3", null, null, graphContainerElem);
+  graphHeaderElem.appendChild(document.createTextNode(heading));
+  var graphCanvasElem = createElement("div", null, "graphcanvas", graphContainerElem);
+  graphCanvasElem.setAttribute("style", "float:left;");
+  var graphKeyElem = createElement("div", null, "graphkey", graphContainerElem);
+  graphKeyElem.setAttribute("style", "float:left;");
+  var graphKeyHeaderElem = createElement("h4", null, null, graphKeyElem);
+  graphKeyHeaderElem.appendChild(document.createTextNode("Key"));
+  var count = keyClasses.length < keyLabels.length ? keyClasses.length : keyLabels.length;
+  var graphKeyInnerElem, graphKeySwatchElem;
+  for (var i=0; i<count; i++) {
+    graphKeyInnerElem = createElement("div", null, "inner", graphKeyElem);
+    graphKeyInnerElem.setAttribute("style", "clear:both;");
+    graphKeySwatchElem = createElement("div", null, "graphkeyswatch " + keyClasses[i], graphKeyInnerElem);
+    graphKeySwatchElem.setAttribute("style", "float:left; width:3em; height:2em;");
+    graphKeyInnerElem.appendChild(document.createTextNode(keyLabels[i]));
+  }
+  createClearDiv(null, null, graphContainerElem);
+  return graphCanvasElem;
+}
+
+function addGraphData(graphCanvasElem, i, barClasses, barHeights, graphHeight, barWidth, tooltip, paymentDate, paymentPeriod, loanTerm) {
+  var nextPaymentDate = getNextPaymentDate(paymentDate, paymentPeriod);
+  var barBorderClass = "graphbar";
+  barBorderClass += nextPaymentDate.getYear() > paymentDate.getYear() ? " graphyear" : "";
+  barBorderClass += i == 0 ? " graphstart" : "";
+  barBorderClass += i == loanTerm-1 ? " graphend" : "";
+  var graphBarElem = createElement("div", null,  barBorderClass, graphCanvasElem);
+  graphBarElem.setAttribute("style", "float:left; width:" + barWidth + "px; height:" + graphHeight + "px;");
+  graphBarElem.setAttribute("title", tooltip);
+  var count = barClasses.length < barHeights.length ? barClasses.length : barHeights.length;
+  var graphItemElem, height;
+  var spacerHeight = graphHeight - barHeights[0];
+  var graphSpacerElem = createElement("div", null, "graphspacer", graphBarElem);
+  graphSpacerElem.setAttribute("style", "width:" + barWidth + "px; height:" + spacerHeight + "px;");
+  for (var i=0; i<count; i++) {
+    height = barHeights[i];
+    for (var j=i+1; j<count; j++) {
+      height -= barHeights[j];
+    }
+    graphItemElem = createElement("div", null, barClasses[i], graphBarElem);
+    graphItemElem.setAttribute("style", "width:" + barWidth + "px; height:" + height + "px;");
+  }
+}
+
+function addGraphXLabels(graphCanvasElem, barWidth, graphWidth, commencementDate, paymentPeriod, loanTerm, leftMargin) {
+  var paymentDate = new Date(commencementDate);
+  var nextPaymentDate = getNextPaymentDate(paymentDate, paymentPeriod);
+  var elapsedPeriods = -1;
+  var labelWidth = 0;
+  var remainingWidth = graphWidth;
+  var margin, labelElem;
+  for (var i=0; i<loanTerm; i++) {
+    // TODO Check for overlapping labels at the left hand side of x axis.
+    elapsedPeriods++;
+    if (i==0 || nextPaymentDate.getYear() > paymentDate.getYear()) {
+      margin = Math.min(elapsedPeriods * barWidth - labelWidth, remainingWidth + labelWidth);
+      if (i == 0) {
+        margin += leftMargin;
+      }
+      if (margin > 0) {
+        var bodyElem = document.getElementsByTagName("body")[0];
+        labelElem = createElement("div", null, "graphlabel graphlabelx", bodyElem);
+        labelElem.setAttribute("style", "float:left;");
+        labelInnerElem = createElement("div", null, "inner", labelElem);
+        labelInnerElem.appendChild(document.createTextNode(nextPaymentDate.format("yyyy")));
+        labelElem.setAttribute("style", "float:left; margin-left:" + margin + "px;");
+        elapsedPeriods = 0;
+        labelWidth = parseInt(document.defaultView.getComputedStyle(labelElem, "").getPropertyValue("width"));
+        graphCanvasElem.appendChild(labelElem);
+      }
+    }
+    paymentDate = new Date(nextPaymentDate);
+    nextPaymentDate = getNextPaymentDate(paymentDate, paymentPeriod);
+    remainingWidth -= barWidth;
+  }
+}
+
+function addGraphYLabels(graphCanvasElem, graphHeight, minValueLabel, maxValueLabel) {
+  var maxValueLabelElem = createElement("div", null, "graphlabel graphlabely");
+  maxValueLabelInnerElem = createElement("div", null, "inner", maxValueLabelElem);
+  maxValueLabelInnerElem.appendChild(document.createTextNode(maxValueLabel));
+  maxValueLabelElem.setAttribute("style", "float:left;");
+  var minValueLabelElem = createElement("div", null, "graphlabel graphlabely");
+  minValueLabelInnerElem = createElement("div", null, "inner", minValueLabelElem);
+  minValueLabelInnerElem.appendChild(document.createTextNode(minValueLabel));
+  minValueLabelElem.setAttribute("style", "float:left;");
+  var bodyElem = document.getElementsByTagName("body")[0];
+  bodyElem.appendChild(minValueLabelElem);
+  bodyElem.appendChild(maxValueLabelElem);
+  var labelWidth = 12 + Math.max(parseInt(document.defaultView.getComputedStyle(minValueLabelElem, "").getPropertyValue("width")), parseInt(document.defaultView.getComputedStyle(maxValueLabelElem, "").getPropertyValue("width")));
+  var labelHeight = parseInt(document.defaultView.getComputedStyle(minValueLabelElem, "").getPropertyValue("height")) + parseInt(document.defaultView.getComputedStyle(maxValueLabelElem, "").getPropertyValue("height"));
+  var graphYLabelsElem = createElement("div", null, null, graphCanvasElem);
+  graphYLabelsElem.setAttribute("style", "float:left; width:" + labelWidth + "px;");
+  maxValueLabelElem.setAttribute("style", "float:none; margin-bottom:" + (graphHeight - labelHeight) + "px; width:" + labelWidth + "px; text-align:right;");
+  minValueLabelElem.setAttribute("style", "float:none; width:" + labelWidth + "px; text-align:right;");
+  graphYLabelsElem.appendChild(maxValueLabelElem);
+  graphYLabelsElem.appendChild(minValueLabelElem);
+  return labelWidth;
+}
+
+/**
+ * Determine the next payment date, based on the previous date and the number
+ * of payments per year.
+ *
+ * @param previousPaymentDate Date on which the previous payment occurred.
+ * @param paymentPeriod Number of payments per year.
+ *
+ * @return Date object when the next payment should occur.
+ */
+function getNextPaymentDate(previousPaymentDate, paymentPeriod) {
+  var paymentDate = new Date(previousPaymentDate);
+  if (paymentPeriod == 1) {
+    paymentDate.setYear(paymentDate.getYear() + 1);
+  } else if (paymentPeriod == 12) {
+    paymentDate.setMonth(paymentDate.getMonth() + 1);
+  } else {
+    paymentDate.setDate(paymentDate.getDate() + DAYS_PER_YEAR / paymentPeriod);
+  }
+  return paymentDate;
+}
+
+/**
+ * Get the actual payment amount, based on the nominated payment and the current
+ * balance and interest rate.  The return value of this method will always 
+ * ensure that the final payment leaves the loan with a balance of zero.
+ *
+ * @param nominatedPayment The maximum payment amount, will be the return value
+ *   if the balance is greater than this amount.
+ * @param balance Current balance.
+ * @param periodicInterestRate The rate of interest charged per payment period.
+ *
+ * @return The actual payment that should occur in this payment period.
+ */
+function getActualPayment(nominatedPayment, balance, periodicInterestRate) {
+  var interestedBalance = balance * (1 + periodicInterestRate);
+  if (interestedBalance > nominatedPayment) {
+    return nominatedPayment;
+  } else {
+    return interestedBalance;
+  }
+}
+  // -->
+  </script>
+  <title>
+    Loan Calculator on Leftclick.com.au
+  </title>
+</head>
+<body onload="initialiseLoanCalculator();">
+  <div id="header">
+    <div id="leftclick">
+      <a href="http://www.leftclick.com.au/" title="Leftclick.com.au"><img src="http://www.leftclick.com.au/logos/leftclick.png" alt="Leftclick.com.au" title="Leftclick.com.au" /></a>
+    </div>
+    <h1>
+      Loan Calculator
+    </h1>
+  </div>
+  
+  <div id="instructions">
+    <p>
+      Enter the loan details into the fields below, and press <code>Calculate</code> to find the repayment amount and total interest paid.
+      You may then select <code>Show Details</code> to display the complete amortization schedule and related graphs.
+      The latest, original version is available at <a href="http://www.leftclick.com.au/loancalc/" title="Leftclick.com.au Loan Calculator online">http://www.leftclick.com.au/loancalc/</a>.
+      See also <a href="#future" onclick="setElementDisplay('future', 'block'); return false;">future plans</a>, <a href="#bugs" onclick="setElementDisplay('bugs', 'block'); return false;">known bugs</a> and <a href="#implnotes" onclick="setElementDisplay('implnotes', 'block'); return false;">implementation notes</a>.
+    </p>
+    <noscript>
+      <strong>Note</strong>:
+      You need JavaScript enabled in order to use this software!
+      Please check your settings, or download a JavaScript capable browser such as <a href="http://getfirefox.com/" title="Get Firefox!">Firefox</a>.
+    </noscript>
+  </div>
+  
+  <div id="details">
+    <h2>
+      Loan Details
+    </h2>
+    <form method="post" action="#" name="d" onsubmit="calculateLoanPayments(); return false;" onreset="window.location.reload(); return false;">
+      <div id="detailsdhtml"></div>
+    </form>
+  </div>
+  
+  <div id="results">
+    <h2>
+      Loan Repayments
+    </h2>
+    <form method="post" action="#" name="r" onsubmit="return false;">
+      <div id="resultsdhtml"></div>
+    </form>
+  </div>
+  
+  <div id="footer">
+    <div id="version"></div>
+    <address>
+      Copyright &copy; <a href="http://www.leftclick.com.au/" title="Powered by Leftclick.com.au">Leftclick.com.au</a>
+    </address>
+  </div>
+  
+  <div id="future" class="popup">
+    <a href="#" name="future"></a>
+    <div class="inner">
+      <div class="popuptitlebar">
+        <div class="popupbutton" style="float:right;">
+          <a href="#" onclick="setElementDisplay('future', 'none'); return false;">X</a>
+        </div>
+      </div>
+      <div class="popupbody">
+        <h2>Future Development Plans</h2>
+        <p>
+          Future versions of this application may include the following features depending on hwo much effort I decide to put into this:
+        </p>
+        <ul>
+          <li>
+            Ability to add one-off payments.
+          </li>
+          <li>
+            Ability to add additional regular payments.
+          </li>
+          <li>
+            Ability to break the loan into multiple periods, each with a different rate.
+            This would allow representation of interest-free periods and introductory rates.
+          </li>
+          <li>
+            Currently, this calculator assumes that the repayments are made at the same frequency as the interest is calculated.  In future it should handle different frequencies for interest vs. repayments.
+          </li>
+        </ul>
+        <center>
+          <a href="#" onclick="setElementDisplay('future', 'none'); return false;">Close</a>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div id="bugs" class="popup">
+    <a href="#" name="bugs"></a>
+    <div class="inner">
+      <div class="popuptitlebar">
+        <div class="popupbutton" style="float:right;">
+          <a href="#" onclick="setElementDisplay('bugs', 'none'); return false;">X</a>
+        </div>
+      </div>
+      <div class="popupbody">
+        <h2>Known Bugs</h2>
+        <p>
+          Currently known bugs/issues with this software:
+        </p>
+        <ul>
+          <li>
+            Rounding error causes 1px gaps at bottom of graph (&gt;=2 data series).
+          </li>
+          <li>
+            Throbber image doesn't work properly.
+            Suspect limitations of JavaScript / browser environment for client-side processing. (Firefox/Linux)
+          </li>
+          <li>
+            For loans with a large number of periods, the calculation of the amortization schedule will take some time to process, and may cause the browser to hang.
+            Suspect limitations of JavaScript / browser environment for client-side processing. (Firefox/Linux)
+          </li>
+          <li>
+            After reloading, calculating and clicking <code>Show Details</code>, the view sometimes skips down to half-way down the page. (Firefox/Linux)
+          </li>
+        </ul>
+        <center>
+          <a href="#" onclick="setElementDisplay('bugs', 'none'); return false;">Close</a>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div id="implnotes" class="popup">
+    <a href="#" name="implnotes"></a>
+    <div class="inner">
+      <div class="popuptitlebar">
+        <div class="popupbutton" style="float:right;">
+          <a href="#" onclick="setElementDisplay('implnotes', 'none'); return false;">X</a>
+        </div>
+      </div>
+      <div class="popupbody">
+        <h2>Implementation Notes</h2>
+        <p>
+          This software is written in DHTML and relies on JavaScript.
+          The input and output displays are completely generated; the page contains only a minimal skeleton of static HTML.
+          All processing is done client side, and the software is encapsulated in a single file, with the exception of the (optional) throbber image (which is having some issues at the moment anyway).
+          If you want a copy, right-click on the page and select View Source or Save Page.
+        </p>
+        <center>
+          <a href="#" onclick="setElementDisplay('implnotes', 'none'); return false;">Close</a>
+        </center>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
